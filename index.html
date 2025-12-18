@@ -541,13 +541,13 @@
         <!-- Stats Section (Results) -->
         <section class="py-24 px-6 md:px-12 bg-white relative z-20" id="about">
             <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-24 reveal-text">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 reveal-text">
                     
-                    <h2 class="font-display text-5xl md:text-7xl font-medium leading-tight max-w-3xl order-2 md:order-1">
+                    <h2 class="font-display text-5xl md:text-7xl font-medium leading-tight max-w-3xl mb-6 md:mb-0">
                         Clients Stay <br> <span class="text-[#FF3B30]">For A Reason.</span>
                     </h2>
 
-                    <div class="mb-8 md:mb-2 order-1 md:order-2 max-w-xs md:text-right">
+                    <div class="md:mb-2 max-w-xs md:text-right">
                          <p class="text-lg text-gray-600 font-medium leading-relaxed">
                             Real results, rapid deployment, and zero "agency fluff."
                         </p>
@@ -584,7 +584,7 @@
 
                     <!-- Stat 4 -->
                     <div class="reveal-text" style="transition-delay: 0.4s;">
-                        <span class="block font-display text-7xl md:text-8xl font-bold mb-4 count-up" data-target="0" data-suffix="">0</span>
+                        <span class="block font-display text-7xl md:text-8xl font-bold mb-4 count-up" data-start="12" data-target="0" data-suffix="">0</span>
                         <h3 class="text-lg font-bold mb-2">Long-Term Contracts</h3>
                         <p class="text-sm text-gray-500 leading-relaxed">
                             We don't use handcuffs. We earn your business every single month with results, not legal fine print.
@@ -1340,10 +1340,11 @@
             if (entry.isIntersecting) {
             const target = entry.target;
             const endVal = parseFloat(target.getAttribute('data-target'));
+            const startVal = parseFloat(target.getAttribute('data-start') || '0');
             const suffix = target.getAttribute('data-suffix') || '';
             const decimals = parseInt(target.getAttribute('data-decimals') || '0');
             
-            animateValue(target, 0, endVal, 2000, suffix, decimals);
+            animateValue(target, startVal, endVal, 2000, suffix, decimals);
             observer.unobserve(target);
             }
         });
